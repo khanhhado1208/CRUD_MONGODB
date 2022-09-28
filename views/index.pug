@@ -1,0 +1,78 @@
+extends layout
+
+block content
+  div.title-car
+    h1 CRUD Cars    
+
+  //- Create cars
+  div.content_car
+    h2 Create Cars
+    form(action="/" method="POST")
+      div
+        label(for="tittle") Name
+        input(type="text" name="name" required="required")
+      div 
+        label(for="tittle") Brand
+        input(type="text" name="brand" required="required")
+      div 
+        label(for="tittle") Year
+        input(type="text" name="year" required="required")
+      div  
+       button(type="submit") Create
+
+  //- Read cars
+  div.content_car   
+    h2 Available Cars
+    div.list_cars
+     each car in cars
+        ul
+          li
+           span Name:&nbsp
+           =car.name
+          li
+           span Brand:&nbsp
+           =car.brand
+          li
+           span Year:&nbsp
+           =car.year
+          li
+           span ID:&nbsp
+           =car._id 
+
+
+
+  //- Update cars        
+  div.content_car
+    h2 Update A Car by ID
+    form(action="/update" method="POST")
+      div
+        label(for="tittle") ID
+        input(type="text" name="id" required="required")
+      div
+        label(for="tittle") Name
+        input(type="text" name="name" required="required")
+      div 
+        label(for="tittle") Brand
+        input(type="text" name="brand" required="required")
+      div 
+        label(for="tittle") Year
+        input(type="text" name="year" required="required")
+      button(type="submit") Update   
+
+  //- Delete cars     
+  div.content_car  
+    h2 Delete A Car by ID
+    form(action="/delete" method="POST")
+      div
+        label(for="id") ID
+        input(type="text" name="id" required="required")
+      button(type="submit") Delete
+
+  //- List all cars with the same brand
+  div.content_car
+    h2 List all cars with a specific make
+    form(action="/make/:make" method="GET")
+     div 
+      label(for="make") Brand
+        input(type="text" name="make" required="required")
+      button(type="submit") Print

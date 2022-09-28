@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  div.title-car
+   each data in make
+    ul
+     li
+      span Name:&nbsp
+      =data.name
+      li
+      span Brand:&nbsp
+      =data.brand
+      li
+      span Year:&nbsp
+      =data.year
+      li
+      span ID:&nbsp
+      =data._id 
